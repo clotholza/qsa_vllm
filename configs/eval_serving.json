@@ -1,0 +1,13 @@
+{
+  "gsm8k_api_workers": 24,
+  "math500_api_workers": 24,
+  "code_api_workers": 128,
+  "mmlu_pro_api_workers": 128,
+  "async_scheduling": true,
+  "decode_graph_sizes": [
+    48,
+    96,
+    144,
+    160
+  ]
+}

@@ -1,0 +1,2 @@
+[vllm.general_plugins]
+yulan_qsa = yulan_qsa_vllm:register

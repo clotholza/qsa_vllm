@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yulan-qsa-vllm"
+version = "0.1.0"
+description = "BF16 paged YuLan QSA inference for A800 tensor parallelism"
+requires-python = ">=3.12"
+dependencies = ["vllm==0.30.0"]
+
+[project.entry-points."vllm.general_plugins"]
+yulan_qsa = "yulan_qsa_vllm:register"
+
+[tool.setuptools.packages.find]
+include = ["yulan_qsa_vllm*"]
