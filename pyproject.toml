@@ -14,3 +14,6 @@ yulan_qsa = "yulan_qsa_vllm:register"
 
 [tool.setuptools.packages.find]
 include = ["yulan_qsa_vllm*"]
+
+[tool.setuptools.package-data]
+yulan_qsa_vllm = ["tool_chat_template.jinja", "ops/csrc/*.cu"]

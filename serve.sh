@@ -40,6 +40,9 @@ fi
 if [[ -n "${QSA_KV_CACHE_MEMORY_BYTES}" ]]; then
     qsa_optional_args+=(--kv-cache-memory-bytes "${QSA_KV_CACHE_MEMORY_BYTES}")
 fi
+if [[ "${QSA_ENABLE_AUTO_TOOL_CHOICE:-true}" == true ]]; then
+    qsa_optional_args+=(--enable-auto-tool-choice --tool-call-parser yulan)
+fi
 if [[ -n "${QSA_CHAT_TEMPLATE}" ]]; then
     qsa_optional_args+=(--chat-template "${QSA_CHAT_TEMPLATE}")
 fi

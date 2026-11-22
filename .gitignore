@@ -16,4 +16,3 @@ __pycache__/
 /debug_*.py
 /smoke_*.py
 /test_*.py
-/tests/
