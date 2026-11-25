@@ -7,13 +7,14 @@ from types import SimpleNamespace
 
 from tokenizers import Tokenizer
 from tokenizers.models import WordLevel
-from transformers import AutoTokenizer, PreTrainedTokenizerFast
+from transformers import PreTrainedTokenizerFast
 from vllm.entrypoints.generate.base.protocol import RequestResponseMetadata
 from vllm.entrypoints.openai.chat_completion.protocol import ChatCompletionRequest
 from vllm.entrypoints.openai.chat_completion.serving import OpenAIServingChat
 from vllm.outputs import CompletionOutput, RequestOutput
 from vllm.plugins import load_general_plugins
 from vllm.renderers.hf import resolve_chat_template
+from vllm.tokenizers import get_tokenizer
 from vllm.tokenizers.hf import get_cached_tokenizer
 from vllm.tool_parsers import ToolParserManager
 
@@ -57,7 +58,7 @@ def chat_request(*, stream=True, tool_choice="auto"):
 def load_tokenizer():
     model = os.environ.get("QSA_TEST_TOKENIZER")
     if model:
-        return get_cached_tokenizer(AutoTokenizer.from_pretrained(model))
+        return get_tokenizer(model, trust_remote_code=True)
     tokenizer = Tokenizer(WordLevel({"[UNK]": 0}, unk_token="[UNK]"))
     return get_cached_tokenizer(PreTrainedTokenizerFast(
         tokenizer_object=tokenizer,
